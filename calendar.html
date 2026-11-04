@@ -1,4 +1,99 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10294b"><meta name="description" content="GMC Robotics Club: student teams, season calendar, event countdowns, FAQs and official resources."><title>GMC Robotics Club</title><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css"></head>
-<body data-page="calendar"><a class="skip-link" href="#main">Skip to main content</a><header class="site-header"><div class="container header-row"><a class="identity" href="index.html" aria-label="GMC Robotics Club home"><span class="brand-mark" aria-hidden="true">G<span>+</span></span><span class="identity-label"><strong>GMC <span>ROBOTICS</span></strong><small>BUILD. CODE. COMPETE.</small></span></a><button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation">☰</button><nav id="main-nav" aria-label="Main navigation"><a href="index.html">Home</a><a href="index.html#teams">Teams</a><a href="calendar.html" aria-current=page>Calendar</a><a href="faq.html">FAQ</a><a href="index.html#resources">Resources</a><a class="classroom-link" data-classroom href="https://classroom.google.com/c/ODkyMjI2MjE1NDIw" target="_blank" rel="noopener noreferrer">Go to G-Classroom <span aria-hidden="true">↗</span></a></nav></div></header>
-<main id="main"><section class="page-intro container"><span class="kicker">PLAN YOUR SEASON / 2026–2027</span><h1>Make every<br><span>event count.</span></h1><p>The season at a glance, with countdowns to every event. Get ready, stay curious and check Classroom for final plans.</p></section><section class="container calendar-section"><div id="calendar-next" class="next-event"></div><div class="calendar-toolbar"><div><h2>The season calendar</h2><p>Countdowns use calendar days in Eastern time; event start times are not yet confirmed.</p></div><label class="year-select">View year <select id="calendar-year"><option value="2026">2026</option><option value="2027">2027</option></select></label></div><div class="calendar-layout"><div class="calendar-box"><div class="month-toolbar"><h3 id="month-title" aria-live="polite"></h3><div><button type="button" id="prev-month" aria-label="Previous month">←</button><button type="button" id="calendar-today">Today</button><button type="button" id="next-month" aria-label="Next month">→</button></div></div><div class="weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div id="calendar-grid" class="calendar-grid" aria-label="Monthly calendar"></div><div class="calendar-legend"><span><i></i> Listed event</span><span>Click an event day to see details</span></div></div><aside class="calendar-sidebar"><span class="kicker">ON THE SCHEDULE</span><h3 id="month-events-title"></h3><div id="month-events" aria-live="polite"></div></aside></div><div class="info-note"><strong>Before you make plans:</strong> This includes potential events from the sponsor’s October 14 snapshot. Date/location verification is shown on each event. Club participation and payment remain unconfirmed. Verify details at <a href="https://recfevents.org/" target="_blank" rel="noopener noreferrer">RECF Events ↗</a> and with the sponsor.</div><div class="schedule-heading"><h2>Every event. One timeline.</h2><div class="status-key"><span class="status invoice">Invoice on file</span><span class="status planned">Planned / not verified</span><span class="status confirmed">Paid / confirmed</span></div></div><p class="schedule-note">An invoice is not proof of payment. Only sponsor-verified registrations will show “Paid / confirmed.”</p><div id="events-list" class="event-list"></div></section><noscript><div class="container info-note">Enable JavaScript to view club content, search FAQs and use the event calendar. Official announcements are available in <a href="https://classroom.google.com/c/ODkyMjI2MjE1NDIw">Google Classroom</a>.</div></noscript></main><footer><div class="container footer-top"><a class="footer-brand" href="index.html">GMC Robotics Club<span>Student-led. Built together.</span></a><div class="footer-links"><a href="calendar.html">Calendar</a><a href="faq.html">FAQ</a><a data-classroom href="https://classroom.google.com/c/ODkyMjI2MjE1NDIw" target="_blank" rel="noopener noreferrer">G-Classroom ↗</a></div></div><div class="container footer-bottom"><span>© <span id="copyright-year">2026</span> GMC Robotics Club</span><span>2026–2027 season · RECF Achieve</span></div></footer><script src="config.js"></script><script src="script.js"></script></body></html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ff6831">
+  <title>Season calendar: GMC Robotics Club</title>
+  <meta name="description" content="Every listed 2026–2027 tournament for the Greer Middle College Charter High School robotics club, with countdowns, status and a monthly calendar.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="GMC Robotics Club">
+  <meta property="og:title" content="Season calendar: GMC Robotics Club">
+  <meta property="og:description" content="Every listed 2026–2027 tournament for the Greer Middle College Charter High School robotics club, with countdowns, status and a monthly calendar.">
+  <meta property="og:url" content="https://www.coachw.club/bots/calendar.html">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="calendar">
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header on-field field-orange">
+    <a class="wordmark" href="index.html">GMC Robotics</a>
+    <button class="menu-toggle" type="button" aria-controls="main-nav" aria-expanded="false">Menu</button>
+    <nav id="main-nav" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="calendar.html" aria-current="page">Calendar</a>
+      <a href="index.html#teams">Teams</a>
+      <a href="faq.html">FAQ</a>
+      <a href="index.html#resources">Resources</a>
+      <a class="button" data-classroom href="https://classroom.google.com/c/ODkyMjI2MjE1NDIw" target="_blank" rel="noopener noreferrer">Go to Classroom</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="page-title field-orange">
+      <h1><span class="line">The season</span></h1>
+      <p>Every listed event, soonest first. Countdowns use calendar days in Eastern time; start times aren’t confirmed yet.</p>
+    </section>
+
+    <section class="lineup-section" aria-labelledby="list-title">
+      <div class="section-top">
+        <h2 id="list-title">Events in <span id="list-year">2026</span></h2>
+        <label class="year-select">View year
+          <select id="calendar-year"><option value="2026">2026</option><option value="2027">2027</option></select>
+        </label>
+      </div>
+      <div id="events-list"></div>
+      <p class="note" data-rise>Most dates and locations come from the sponsor’s October 14 snapshot and haven’t been independently verified. Carolina Countdown and PCCTC Winter Qualifier were checked against RECF. A listing is not a commitment to attend, and an invoice is not proof of payment; only sponsor-verified registrations show “Paid / confirmed”. Check <a href="https://recfevents.org/" target="_blank" rel="noopener noreferrer">RECF Events</a> and the sponsor before making plans.</p>
+    </section>
+
+    <section class="month-section field-mint" aria-labelledby="month-title">
+      <div class="month-layout">
+        <div>
+          <div class="month-toolbar">
+            <h2 id="month-title" aria-live="polite"></h2>
+            <div>
+              <button type="button" id="prev-month" aria-label="Previous month">←</button>
+              <button type="button" id="calendar-today">Today</button>
+              <button type="button" id="next-month" aria-label="Next month">→</button>
+            </div>
+          </div>
+          <div class="weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+          <div id="calendar-grid" class="calendar-grid" role="group" aria-label="Monthly calendar"></div>
+          <p class="month-hint">Black days have listed events. Choose one to see just that day in the panel.</p>
+        </div>
+        <aside class="month-side">
+          <h3 id="month-events-title"></h3>
+          <div id="month-events" aria-live="polite"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="strip" aria-label="Pictures from the world of robotics">
+      <div class="strip-track">
+        <figure><img src="assets/vex-robot.jpg" width="1000" height="667" alt="A metal VEX competition robot with chain-driven lift on a practice field" loading="lazy"><figcaption>A VEX robot from an earlier season</figcaption></figure>
+        <figure><img src="assets/solder-joint.jpg" width="1000" height="750" alt="Close-up of a red wire soldered to a green circuit board" loading="lazy"><figcaption>A hand-soldered joint</figcaption></figure>
+        <figure><img src="assets/elektro.jpg" width="900" height="1000" alt="Elektro, a gold humanoid robot, in a museum display" loading="lazy"><figcaption>Elektro, from the 1939 World’s Fair</figcaption></figure>
+        <figure><img src="assets/chain.jpg" width="1024" height="250" alt="Engraving of a section of drive chain" loading="lazy"><figcaption>Drive chain, engraved</figcaption></figure>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-notes">
+      <p>The robotics club at Greer Middle College Charter High School (GMC) in Taylors, SC, <span data-season>2026–2027</span> RECF Achieve season. Student-led, built together.</p>
+      <p>Official announcements, documents and final event logistics are in Google Classroom.</p>
+      <a href="#main">Back to top</a>
+    </div>
+    <a class="footer-line" data-classroom href="https://classroom.google.com/c/ODkyMjI2MjE1NDIw" target="_blank" rel="noopener noreferrer">Go to Classroom</a>
+    <p class="credits">Pictures: <a href="https://commons.wikimedia.org/w/index.php?curid=96809921">“VEX Robotics Competition Robot with Cap”</a> by Noah Wulf, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, cropped; <a href="https://commons.wikimedia.org/w/index.php?curid=8630310">“Solderedjoint”</a> by MJN123, <a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Senator_John_Heinz_History_Center_-_IMG_7802.JPG">“Senator John Heinz History Center - IMG 7802”</a> by Daderot, public domain, cropped; <a href="https://www.flickr.com/photos/153584064@N07/46060718314">“Metal bicycle chain”</a> by rawpixel, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>, cropped.</p>
+    <div class="footer-meta">
+      <span><a href="calendar.html">Calendar</a> · <a href="faq.html">FAQ</a></span>
+      <span>© <span id="copyright-year">2026</span> GMC Robotics Club</span>
+    </div>
+  </footer>
+  <noscript><p class="noscript">Turn on JavaScript to see club content. Official announcements are in <a href="https://classroom.google.com/c/ODkyMjI2MjE1NDIw">Google Classroom</a>.</p></noscript>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

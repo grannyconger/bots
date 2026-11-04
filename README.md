@@ -1,13 +1,21 @@
 # GMC Robotics Club
 
-A clean, responsive club website with a white, navy and cornflower-blue theme. Uses Space Grotesk headings and DM Sans body text, with system font fallbacks. No runtime dependencies or student data storage.
+The robotics club at Greer Middle College Charter High School in Taylors, SC. This site is the season hub for current students and families: the next event, what to prepare, team status and the schedule. Flat orange, mint and black, with Bebas Neue headings and EB Garamond body text. No runtime dependencies and no student data on a server; the prep checklist saves ticks only in each visitor's own browser.
 
 ## Pages
 
-- `index.html`: announcements, three teams, next event, official resources and Google Classroom buttons.
+- `index.html`: countdown to the next event, prep checklist, announcements, upcoming events, the three teams and official resources.
 - `faq.html`: searchable, category-filtered FAQ with native, keyboard-accessible dropdowns.
-- `calendar.html`: monthly calendar, year selector, season timeline and countdown for every listed event.
-- `config.js`: **edit this file to update club information**. FAQs, teams, goals, announcements, resources and event statuses live here.
+- `calendar.html`: every listed event with countdowns, then the monthly calendar and year selector.
+- `config.js`: **edit this file to update club information**. FAQs, teams, goals, announcements, meetings, the prep checklist, resources and event statuses live here.
+
+## Updating the site
+
+- **Meetings:** add entries to `meetings`, such as `{ when: 'Tuesdays, 3:30–5:00', where: 'Room 101' }`. They appear under "Right now"; nothing shows while the list is empty.
+- **Announcements:** add `expires: '2026-11-07'` and the announcement disappears after that date.
+- **Team photos:** put the file in `assets/` and add `photo: 'assets/robros.jpg', photoAlt: 'What the picture shows'` to the team. It replaces the drawing. Tiles are 4:5 portrait. Get school permission before using any picture of a student.
+- **Event headline:** `short` is the name in the home page headline. Keep it to about 12 characters.
+- **Picture credits:** the strip uses open-licence pictures that don't show the club. `assets/credits.json` lists their sources; keep the footer credits while they're in use.
 
 ## Updating events
 
@@ -33,14 +41,11 @@ npm run dev
 
 Then visit `http://localhost:4173`. Search, filters, calendar navigation and countdowns work without network. Google Fonts and external destinations need network access.
 
-## Check and build
+## Check
 
 ```sh
 npm run check
-npm run build
 ```
-
-The optional build copies only the seven public site files into `dist/`, keeping project handoff documents out of the deployment. No package installation is required. JavaScript must be enabled for dynamic club content.
 
 ## Deploy
 

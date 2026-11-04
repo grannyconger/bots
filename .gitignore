@@ -1,6 +1,4 @@
-.vercel/
 node_modules/
-dist/
 .DS_Store
 .env*
 # Keep local planning notes out of the public source repository.
