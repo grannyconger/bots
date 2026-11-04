@@ -87,6 +87,7 @@ nav a:not(.button):hover, nav a[aria-current] { text-decoration: underline; text
 .panel:nth-child(3) { background: var(--mint); }
 .panel h3 { font-size: clamp(2.25rem, 1.6rem + 2vw, 3.5rem); line-height: .95; margin-top: auto; }
 .panel p { max-width: 46ch; }
+.panels:has(.panel:nth-child(3)) h3 { font-size: clamp(2.25rem, 1.5rem + 1.2vw, 2.75rem); }
 
 .section-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
 .lineup-group { margin-top: 56px; }
@@ -105,8 +106,7 @@ nav a:not(.button):hover, nav a[aria-current] { text-decoration: underline; text
 .team-art img { width: 100%; height: 100%; object-fit: cover; }
 .art-robot { background: var(--orange); }
 .art-duck { background: var(--mint); }
-.art-three { background: var(--grey); }
-.team-art text { font: 400 300px var(--display); text-anchor: middle; }
+.art-focus { background: var(--grey); }
 .team h3 { margin-top: 14px; font-size: clamp(2rem, 1.5rem + 1.5vw, 3rem); }
 .team p { margin-top: 6px; max-width: 42ch; }
 .team-status { font-weight: 500; }
@@ -222,6 +222,7 @@ select { min-height: 44px; padding: 6px 10px; border: 0; background: var(--surfa
   .team-grid { grid-template-columns: 1fr 1fr; gap: 44px 8px; }
   .team:last-child { grid-column: 1 / -1; }
   .team:last-child .team-art { aspect-ratio: 8 / 5; }
+  .team:last-child .team-art svg { width: auto; height: 84%; }
   .section-top { flex-direction: column; align-items: flex-start; }
   .calendar-day { min-height: 56px; font-size: 1rem; }
   .day-count { font-size: .8125rem; line-height: 1; text-align: center; }

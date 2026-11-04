@@ -11,17 +11,17 @@ window.CLUB = {
   primaryCommunication: 'Google Classroom',
   secondaryCommunication: 'GroupMe',
   // Add a meeting like { when: 'Tuesdays, 3:30–5:00', where: 'Room 101' }. The section stays hidden while this is empty.
-  meetings: [],
+  meetings: [{ when: 'Wednesdays, 3:00–4:00 pm', where: 'Meet in Coach Weaver’s room to start.' }],
   prepChecklist: ['Registration and payment checked', 'Transport and adult supervision set', 'Required forms done', 'Robot ready for inspection', 'Student-written code tested', 'Batteries charged, notebook and tools packed'],
   // Optional per team: photo: 'assets/robros.jpg', photoAlt: 'What the picture shows'. Without a photo the drawing is used.
   teams: [
     { name: 'Robros', drawing: 'robot', status: 'Established', members: '4 students', description: 'Returning competition team', goal: 'Prepare for inspection and confirm tournament readiness', leaders: 'Co-captains to be confirmed' },
     { name: 'Wubba Duckies', drawing: 'duck', status: 'Established', members: '4 students', description: 'Returning competition team', goal: 'Test code and coordinate competition preparation', leaders: 'Co-captains to be confirmed' },
-    { name: 'Team Three', drawing: 'three', status: 'Forming', members: '8 interested', description: 'New team building its first competition robot', goal: 'Finalize membership, roles and equipment purchasing', leaders: 'Co-captains to be selected' }
+    { name: 'Hyper Focus', drawing: 'focus', status: 'Forming', members: '8 interested', description: 'New team building its first competition robot', goal: 'Finalize membership, roles and equipment purchasing', leaders: 'Co-captains to be selected' }
   ],
   announcements: [
     { label: 'Coming up', expires: '2026-10-17', title: 'October 17: Mann Achieve Season Opener', detail: 'Existing teams: confirm registration, payment, inspection readiness, transportation, and adult supervision.' },
-    { label: 'New team', title: 'Recruitment and equipment planning', detail: 'Third team members and roles are being finalized. No equipment orders have been placed yet.' },
+    { label: 'New team', title: 'Recruitment and equipment planning', detail: 'Hyper Focus members and roles are being finalized. No equipment orders have been placed yet.' },
     { label: 'New', title: 'Leadership interest form', detail: 'Students will be invited to indicate technical and operations co-captain interest.' }
   ],
   events: [
@@ -46,6 +46,7 @@ window.CLUB = {
     { title: 'RECF Team Registration Guide', description: 'Create and manage organization teams', url: 'https://kb.roboticseducation.org/hc/en-us/articles/41246659324311-Registering-Teams-in-RECFEvents', group: 'Policies' }
   ],
   faq: [
+    { category:'Getting started', q:'When and where does the club meet?', a:'Wednesdays, 3:00–4:00 pm. Meet in Coach Weaver’s room to start.' },
     { category:'Events', q:'What should we prepare before a tournament?', a:'With your team and sponsor, check registration and payment, transport, adult supervision, required forms and inspection readiness. Test your student-written code, charge approved batteries and organize your notebook and tools. Final logistics belong in Classroom.' },
     { category:'Events', q:'What must happen before a robot competes?', a:'The robot must meet the latest technical and sizing rules and pass inspection. Teams must check in, complete required releases, and have a responsible adult supervising at the event.' },
     { category:'Events', q:'Where do I find upcoming competitions?', a:'Open the Calendar page for season events and countdowns. Dates may change, and potential events are not commitments to attend. An invoice does not confirm a paid registration; check with the sponsor and RECF Events.' },
@@ -61,9 +62,9 @@ window.CLUB = {
     { category:'Teams', q:'Can adults build or program the robot for us?', a:'No. RECF is student-centered. Adults can teach ideas and help students learn, but may not create the robot design, code, or match strategy for students.' },
     { category:'Teams', q:'Do we need an engineering notebook?', a:'Record your own ideas, tests, results and revisions as you work. Students must write their notebook themselves. Check section 6 of the official Achieve manual for judging and AI requirements.' },
     { category:'Events', q:'How much does team registration cost?', a:'Team registration and each tournament have separate fees. Confirm current fees in RECF Events before making a payment; the sponsor coordinates club purchasing.' },
-    { category:'Getting started', q:'Do I need experience to join?', a:'Talk to the sponsor about joining. Team Three is forming, and roles are still being finalized. Building, coding, testing and documentation all offer ways to learn and contribute.' },
+    { category:'Getting started', q:'Do I need experience to join?', a:'Talk to the sponsor about joining. Hyper Focus is forming, and roles are still being finalized. Building, coding, testing and documentation all offer ways to learn and contribute.' },
     { category:'Safety', q:'How do we work safely in the robotics space?', a:'Follow school workshop rules and the sponsor’s instructions. Ask before using unfamiliar tools, use the required protective equipment, and keep hands clear of moving mechanisms. Report damaged batteries, loose wiring and unsafe equipment immediately.' },
-    { category:'Equipment', q:'Has Team Three’s equipment been ordered?', a:'Starter-kit funding has been approved, but no equipment order has been placed. Ask the sponsor for the latest purchasing status. Any additional parts must be approved before purchase.' },
+    { category:'Equipment', q:'Has Hyper Focus’s equipment been ordered?', a:'Starter-kit funding has been approved, but no equipment order has been placed. Ask the sponsor for the latest purchasing status. Any additional parts must be approved before purchase.' },
     { category:'Parents', q:'How can families support the club?', a:'Coordinate with the sponsor through an approved school channel about event logistics and supervision. Encourage students to explain their work and solve problems themselves. Adults can guide learning; students own design and code.' },
     { category:'Troubleshooting', q:'What should I do when the robot or code stops working?', a:'Stop the robot safely, describe what happened, and work with teammates to isolate one issue at a time. Record tests and results. Ask a student mentor or supervising adult to help you learn the troubleshooting process.' }
   ]

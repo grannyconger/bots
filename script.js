@@ -131,14 +131,14 @@
 
   const teams = $('#teams-grid');
   if (teams) d.teams.forEach(item => {
-    const tile = el('article', 'team'), art = el('div', `team-art art-${item.drawing || 'three'}`);
+    const tile = el('article', 'team'), art = el('div', `team-art art-${item.drawing}`);
     tile.dataset.rise = '';
     if (item.photo) {
       const img = el('img');
       img.src = item.photo; img.alt = item.photoAlt || ''; img.loading = 'lazy';
       art.append(img);
     } else {
-      art.innerHTML = `<svg viewBox="0 0 400 400" aria-hidden="true">${item.drawing === 'three' ? '<text x="200" y="305">3</text>' : `<use href="#${item.drawing}"/>`}</svg>`;
+      art.innerHTML = `<svg viewBox="0 0 400 400" aria-hidden="true"><use href="#${item.drawing}"/></svg>`;
     }
     tile.append(art, el('h3', '', item.name), el('p', 'team-status', `${item.status} · ${item.members}`), el('p', '', item.description), el('p', '', `Next focus: ${item.goal}`), el('p', 'team-leaders', item.leaders));
     teams.append(tile);
