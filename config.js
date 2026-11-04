@@ -5,7 +5,7 @@ window.CLUB = {
   classroomUrl: 'https://classroom.google.com/c/ODkyMjI2MjE1NDIw',
   timeZone: 'America/New_York',
   contentReviewed: '2026-10-14',
-  school: 'GMC · RECF Achieve',
+  school: 'Greer Middle College Charter High School',
   season: '2026–2027',
   tagline: 'Build. Code. Compete. Learn.',
   primaryCommunication: 'Google Classroom',

@@ -1,6 +1,6 @@
 # GMC Robotics Club
 
-The season hub for current students and families: the next event, what to prepare, team status and the schedule. Flat orange, mint and black, with Bebas Neue headings and EB Garamond body text. No runtime dependencies and no student data on a server; the prep checklist saves ticks only in each visitor's own browser.
+The robotics club at Greer Middle College Charter High School. This site is the season hub for current students and families: the next event, what to prepare, team status and the schedule. Flat orange, mint and black, with Bebas Neue headings and EB Garamond body text. No runtime dependencies and no student data on a server; the prep checklist saves ticks only in each visitor's own browser.
 
 ## Pages
 
