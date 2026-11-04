@@ -44,9 +44,7 @@ The optional build copies only the seven public site files into `dist/`, keeping
 
 ## Deploy
 
-Push the source to GitHub. For Vercel, import the repository, choose the Other framework preset, use `npm run build`, and set `dist` as the output directory. `vercel.json` contains these settings. A CLI production deployment is `vercel --prod`.
-
-The public pages also work directly from a GitHub Pages repository root, or from the generated `dist/` artifact. All asset paths are relative.
+The site is hosted on GitHub Pages at https://grannyconger.github.io/bots/, served from the root of the `main` branch. Pushing to `main` publishes it; no build step is needed. `.nojekyll` makes Pages serve the files as they are. All asset paths are relative.
 
 ## Rules and sources
 
