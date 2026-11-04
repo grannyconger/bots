@@ -25,8 +25,11 @@
     const value = type => parts.find(p => p.type === type).value;
     return `${value('year')}-${value('month')}-${value('day')}`;
   };
-  const rank = { confirmed: 0, invoice: 1, planned: 2 };
-  const events = [...d.events].sort((a, b) => a.date.localeCompare(b.date) || rank[a.registration] - rank[b.registration] || a.name.localeCompare(b.name));
+  const rank = { confirmed: 0, semi: 1, waitlisted: 2, none: 3 };
+  const entries = event => Object.entries(event.entries || {});
+  const registration = event => entries(event).map(([, value]) => value).sort((a, b) => rank[a] - rank[b])[0] || 'none';
+  const registered = event => registration(event) !== 'none';
+  const events = [...d.events].sort((a, b) => a.date.localeCompare(b.date) || rank[registration(a)] - rank[registration(b)] || a.name.localeCompare(b.name));
   const ended = event => ordinal(today()) > ordinal(event.endDate || event.date);
   const remaining = event => {
     const current = ordinal(today());
@@ -36,8 +39,10 @@
     return `${days} day${days === 1 ? '' : 's'} to go`;
   };
   const dateLabel = event => event.endDate ? `${format(event.date, { month: 'short', day: 'numeric', year: 'numeric' })} – ${format(event.endDate, { month: 'short', day: 'numeric', year: 'numeric' })}` : format(event.date, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
-  const statuses = { invoice: 'Invoice on file · payment unverified', planned: 'Planned · registration unverified', confirmed: 'Paid / confirmed' };
-  const status = event => el('span', `status ${event.registration}`, statuses[event.registration] || statuses.planned);
+  const statuses = { confirmed: 'Confirmed', semi: 'Semi-confirmed', waitlisted: 'Waitlisted', none: 'No team registered' };
+  const status = event => el('span', `status ${registration(event)}`, statuses[registration(event)]);
+  const teamLine = event => entries(event).map(([team, value]) => `${team}: ${statuses[value].toLowerCase()}`).join(' · ');
+  const nextEvent = () => events.find(e => !ended(e) && registered(e)) || events.find(e => !ended(e));
   const sourceLink = event => external(event.source, event.source === 'https://recfevents.org/' ? 'Search RECF Events' : 'Official event information');
   const attachCount = (node, event) => {
     node.dataset.countdown = event.date;
@@ -47,9 +52,8 @@
   function renderLineup(target, list, withLinks) {
     target.replaceChildren();
     const groups = [
-      ['Paid and confirmed', e => !ended(e) && e.registration === 'confirmed'],
-      ['Invoice on file, payment unverified', e => !ended(e) && e.registration === 'invoice'],
-      ['Possible, registration unverified', e => !ended(e) && e.registration === 'planned'],
+      ['Teams registered', e => !ended(e) && registered(e)],
+      ['No team registered', e => !ended(e) && !registered(e)],
       ['Finished', ended]
     ];
     groups.forEach(([title, test]) => {
@@ -64,6 +68,7 @@
         row.append(el('span', 'lineup-name', event.name), el('span', 'lineup-place', event.location), count);
         if (withLinks) row.append(sourceLink(event));
         row.append(el('span', 'lineup-date', format(event.date, { month: 'short', day: 'numeric' })));
+        if (registered(event)) row.append(el('span', 'lineup-teams', teamLine(event)));
         group.append(row);
       });
       target.append(group);
@@ -74,7 +79,7 @@
   function renderNext() {
     const target = $('#next-event');
     if (!target) return;
-    const lead = events.find(e => !ended(e));
+    const lead = nextEvent();
     const setHeadline = (one, two) => {
       document.querySelectorAll('[data-line-one]').forEach(n => { if (n.textContent !== one) n.textContent = one; });
       document.querySelectorAll('[data-line-two]').forEach(n => { if (n.textContent !== two) n.textContent = two; n.dataset.text = two; });
@@ -88,9 +93,10 @@
     }
     const days = ordinal(lead.date) - ordinal(today());
     setHeadline(days > 1 ? `${days} days to` : days === 1 ? '1 day to' : 'Now at', lead.short || 'Next event');
-    target.append(el('p', 'next-name', lead.name), el('p', 'next-when', `${dateLabel(lead)} · ${lead.location}`), status(lead), el('p', 'next-teams', lead.teams));
-    const others = events.filter(e => e !== lead && e.date === lead.date);
-    if (others.length) target.append(el('p', 'next-also', `Also on this date: ${others.map(e => `${e.name}, ${e.location} (${statuses[e.registration].split(' · ')[0].toLowerCase()})`).join('; ')}.`));
+    target.append(el('p', 'next-name', lead.name), el('p', 'next-when', `${dateLabel(lead)} · ${lead.location}`), status(lead));
+    if (registered(lead)) target.append(el('p', 'next-teams', teamLine(lead)));
+    const others = events.filter(e => e !== lead && e.date === lead.date && registered(e));
+    if (others.length) target.append(el('p', 'next-also', `Also on this date: ${others.map(e => `${e.name}, ${e.location} (${teamLine(e)})`).join('; ')}.`));
     const actions = el('p', 'next-actions'), calendar = el('a', '', 'See the full calendar');
     calendar.href = 'calendar.html';
     actions.append(calendar, sourceLink(lead));
@@ -100,7 +106,7 @@
 
   const prep = $('#prep-list');
   if (prep) {
-    const lead = events.find(e => !ended(e));
+    const lead = nextEvent();
     const key = `gmc-prep-${lead ? lead.date : 'none'}`;
     const read = () => { try { return JSON.parse(localStorage.getItem(key)) || []; } catch { return []; } };
     const write = value => { try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* the list still works for this visit */ } };
@@ -140,7 +146,9 @@
     } else {
       art.innerHTML = `<svg viewBox="0 0 400 400" aria-hidden="true"><use href="#${item.drawing}"/></svg>`;
     }
-    tile.append(art, el('h3', '', item.name), el('p', 'team-status', `${item.status} · ${item.members}`), el('p', '', item.description), el('p', '', `Next focus: ${item.goal}`), el('p', 'team-leaders', item.leaders));
+    const schedule = el('ul', 'team-events');
+    events.filter(e => !ended(e) && e.entries && e.entries[item.name]).forEach(e => schedule.append(el('li', '', `${format(e.date, { month: 'short', day: 'numeric' })}: ${e.name} (${statuses[e.entries[item.name]].toLowerCase()})`)));
+    tile.append(art, el('h3', '', item.name), el('p', 'team-status', `${item.status} · ${item.members}`), el('p', '', item.description), el('p', '', `Next focus: ${item.goal}`), schedule, el('p', 'team-leaders', item.leaders));
     teams.append(tile);
   });
 
@@ -152,7 +160,7 @@
     resources.append(a);
   });
 
-  if ($('body').dataset.page === 'home') renderLineup($('#events-list'), events.filter(e => !ended(e)).slice(0, 6), false);
+  if ($('body').dataset.page === 'home') renderLineup($('#events-list'), events.filter(e => !ended(e) && registered(e)), false);
 
   const search = $('#faq-search');
   if (search) {
@@ -196,6 +204,7 @@
         const card = el('article', 'month-event'), count = el('p', 'month-count');
         attachCount(count, event);
         card.append(el('strong', '', event.name), el('p', '', `${format(event.date, { month: 'short', day: 'numeric' })} · ${event.location}`), count, status(event));
+        if (registered(event)) card.append(el('p', '', teamLine(event)));
         list.append(card);
       });
     }

@@ -21,11 +21,13 @@ The robotics club at Greer Middle College Charter High School in Taylors, SC. Th
 
 Use ISO dates such as `2026-10-17`. Add `endDate` for multi-day events. Countdown values use calendar days in `America/New_York`; they do not imply a confirmed start time. Completed events show “Event ended”; multi-day events show “Event in progress” during their date range. The year selector includes events that overlap that year.
 
-`registration` supports:
+`entries` lists each registered team and its status, for example `entries: { Robros: 'confirmed', 'Hyper Focus': 'waitlisted' }`. Leave it out when no team is registered.
 
-- `planned`: potential event; registration unverified.
-- `invoice`: invoice on file; payment still unverified.
-- `confirmed`: paid/confirmed; use only after the sponsor verifies this.
+- `confirmed`: the team's place is confirmed.
+- `semi`: semi-confirmed.
+- `waitlisted`: the team is on the waitlist.
+
+The home page headline and event list use only events with a registered team. Events without one stay on the calendar under "No team registered". Each team tile lists that team's own events.
 
 An event listing is not a commitment to attend. Most dates and locations come from the sponsor’s October 14, 2026 snapshot and are visibly marked as unverified. PCCTC Winter Qualifier was checked against the RECF Events listing; Carolina Countdown dates were checked against RECF’s signature schedule. Verify each event again before travel or payment. The sponsor must verify the club’s own registration, payment and participation separately.
 
