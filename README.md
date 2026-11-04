@@ -44,7 +44,7 @@ The optional build copies only the seven public site files into `dist/`, keeping
 
 ## Deploy
 
-The site is hosted on GitHub Pages at https://grannyconger.github.io/bots/, served from the root of the `main` branch. Pushing to `main` publishes it; no build step is needed. `.nojekyll` makes Pages serve the files as they are. All asset paths are relative.
+The site is hosted on GitHub Pages at https://www.coachw.club/bots/, served from the root of the `main` branch. Pushing to `main` publishes it; no build step is needed. `.nojekyll` makes Pages serve the files as they are. All asset paths are relative.
 
 ## Rules and sources
 
